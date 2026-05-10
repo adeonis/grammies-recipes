@@ -6,104 +6,77 @@
 <title>Grammie's Recipe Box</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --cream: #FDF6EC;
-  --warm-white: #FFFEF9;
-  --card-bg: #FFFDF5;
-  --brown: #5C3D2E;
-  --brown-light: #8B6914;
-  --ink-blue: #2C3E6B;
-  --ink-blue-light: #4A5F8F;
-  --rust: #A0522D;
-  --sage: #7A8B6F;
-  --gold: #C9A84C;
-  --gold-light: #E8D5A0;
-  --border: #D4C5A9;
-  --shadow: rgba(92, 61, 46, 0.12);
+  --bg: #FAFAF8;
+  --bg-warm: #F4F2EE;
+  --surface: #FFFFFF;
+  --text: #1A1A1A;
+  --text-secondary: #555;
+  --text-tertiary: #999;
+  --accent: #2D2D2D;
+  --olive: #9B8C6C;
+  --olive-light: #B8AD94;
+  --olive-faint: #E8E4DC;
+  --border: #E0E0E0;
+  --border-light: #EBEBEB;
+  --note: #9B8C6C;
+  --tip-bg: #F7F5F1;
+  --hover: #F7F7F5;
 }
 
 body {
-  font-family: 'Lora', Georgia, serif;
-  background: var(--cream);
-  color: var(--brown);
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--bg);
+  color: var(--text);
   line-height: 1.7;
   min-height: 100vh;
-}
-
-/* Subtle linen texture */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Header */
 .hero {
-  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 5rem 2rem 3.5rem;
   text-align: center;
-  padding: 4rem 2rem 3rem;
-  background: linear-gradient(180deg, #F5EBD8 0%, var(--cream) 100%);
-  border-bottom: 1px solid var(--border);
-}
-
-.hero-ornament {
-  color: var(--gold);
-  font-size: 1.5rem;
-  letter-spacing: 0.5em;
-  margin-bottom: 1rem;
 }
 
 .hero h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
-  color: var(--brown);
-  font-weight: 700;
-  margin-bottom: 0.25rem;
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(2.8rem, 6vw, 4rem);
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
 }
 
 .hero .subtitle {
-  font-family: 'Playfair Display', serif;
+  font-family: 'EB Garamond', serif;
   font-style: italic;
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--rust);
+  font-size: 1.1rem;
+  color: var(--olive);
   margin-bottom: 1.5rem;
 }
 
+.hero .hero-rule {
+  width: 60px;
+  height: 2px;
+  background: var(--olive);
+  border: none;
+  margin: 0 auto 1.5rem;
+}
+
 .hero .intro {
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 0.95rem;
-  color: var(--ink-blue-light);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
   line-height: 1.8;
-}
-
-/* Divider */
-.divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin: 2rem auto;
-  max-width: 300px;
-}
-
-.divider::before, .divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--gold-light);
-}
-
-.divider span {
-  color: var(--gold);
-  font-size: 1.2rem;
+  max-width: 540px;
+  margin: 0 auto;
 }
 
 /* Navigation / Category Filter */
@@ -111,94 +84,92 @@ body::before {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--cream);
+  background: rgba(250, 250, 248, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  padding: 1rem 2rem;
+  padding: 0.75rem 2rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .cat-btn {
-  font-family: 'Lora', serif;
-  font-size: 0.85rem;
-  padding: 0.4rem 1.2rem;
-  border: 1px solid var(--border);
-  background: var(--warm-white);
-  color: var(--brown);
-  border-radius: 2rem;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.35rem 0.9rem;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.15s ease;
 }
 
-.cat-btn:hover, .cat-btn.active {
-  background: var(--brown);
-  color: var(--warm-white);
-  border-color: var(--brown);
+.cat-btn:hover {
+  background: var(--hover);
+  color: var(--text);
+}
+
+.cat-btn.active {
+  background: var(--accent);
+  color: #fff;
 }
 
 /* Recipe Grid */
 .recipe-grid {
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 4rem;
+  padding: 2rem 1.5rem 4rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--border-light);
+  border: 1px solid var(--border-light);
 }
 
 /* Recipe Card */
 .recipe-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  box-shadow: 0 2px 8px var(--shadow), 0 1px 3px rgba(0,0,0,0.06);
+  background: var(--surface);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   position: relative;
-}
-
-.recipe-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--gold-light));
+  transition: background 0.15s ease;
 }
 
 .recipe-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px var(--shadow), 0 2px 8px rgba(0,0,0,0.08);
+  background: var(--hover);
 }
 
 .card-header {
-  padding: 1.5rem 1.5rem 0.75rem;
-  border-bottom: 1px dashed var(--border);
+  padding: 1.5rem 1.5rem 0;
 }
 
 .card-category {
-  font-size: 0.7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--sage);
-  font-weight: 600;
-  margin-bottom: 0.25rem;
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  margin-bottom: 0.35rem;
 }
 
 .card-header h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.35rem;
-  color: var(--ink-blue);
+  font-family: 'EB Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--text);
   line-height: 1.3;
 }
 
 .card-header .card-note {
   font-style: italic;
-  font-size: 0.85rem;
-  color: var(--rust);
-  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--note);
+  margin-top: 0.2rem;
 }
 
 .card-body {
@@ -206,14 +177,13 @@ body::before {
 }
 
 .card-body h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.8rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--brown);
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.25rem;
-  border-bottom: 1px solid var(--gold-light);
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
 }
 
 .ingredients {
@@ -223,23 +193,31 @@ body::before {
 
 .ingredients li {
   font-size: 0.9rem;
-  padding: 0.2rem 0;
-  padding-left: 1.2rem;
+  padding: 0.15rem 0;
+  padding-left: 0.9rem;
   position: relative;
-  color: #4A3728;
+  color: var(--text-secondary);
 }
 
 .ingredients li::before {
-  content: '\2022';
+  content: '';
   position: absolute;
   left: 0;
-  color: var(--gold);
+  top: 0.7em;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
 }
 
 .instructions {
   font-size: 0.9rem;
-  color: #4A3728;
-  line-height: 1.8;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .instructions p {
@@ -247,19 +225,23 @@ body::before {
 }
 
 .grammie-tip {
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  background: linear-gradient(135deg, #FFF8E7, #FDF3DC);
-  border-left: 3px solid var(--gold);
-  border-radius: 0 4px 4px 0;
+  margin-top: 0.75rem;
+  padding: 0.75rem 0 0;
+  border-top: 1px solid var(--olive-faint);
+  font-family: 'EB Garamond', serif;
   font-style: italic;
-  font-size: 0.85rem;
-  color: var(--rust);
+  font-size: 0.95rem;
+  color: var(--olive);
+  line-height: 1.6;
 }
 
 .grammie-tip::before {
-  content: "Grammie's tip: ";
-  font-weight: 600;
+  content: "\201C";
+  font-size: 1.5rem;
+  line-height: 0;
+  vertical-align: -0.15em;
+  margin-right: 0.1em;
+  color: var(--olive-light);
 }
 
 /* Modal */
@@ -267,89 +249,85 @@ body::before {
   display: none;
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(42, 30, 20, 0.6);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 1000;
   overflow-y: auto;
   padding: 2rem 1rem;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(4px);
 }
 
 .modal-overlay.active { display: flex; justify-content: center; align-items: flex-start; }
 
 .modal {
-  background: var(--card-bg);
-  max-width: 680px;
+  background: var(--surface);
+  max-width: 640px;
   width: 100%;
-  border-radius: 4px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  border-radius: 6px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.18);
   position: relative;
-  margin: 2rem auto;
+  margin: 3rem auto;
   overflow: hidden;
-}
-
-.modal::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--gold-light));
 }
 
 .modal-close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.25rem;
+  right: 1.25rem;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   cursor: pointer;
-  color: var(--brown);
+  color: var(--text-tertiary);
   width: 2rem;
   height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transition: background 0.2s;
+  border-radius: 4px;
+  transition: all 0.15s;
 }
 
-.modal-close:hover { background: rgba(0,0,0,0.05); }
+.modal-close:hover { background: var(--hover); color: var(--text); }
 
 .modal-content {
   padding: 2.5rem 2.5rem 2rem;
 }
 
 .modal-content .card-category {
-  font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--sage);
-  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+  font-weight: 500;
 }
 
 .modal-content h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'EB Garamond', serif;
   font-size: 2rem;
-  color: var(--ink-blue);
-  margin: 0.25rem 0 0.25rem;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0.3rem 0 0.2rem;
   line-height: 1.2;
 }
 
 .modal-content .card-note {
   font-style: italic;
-  color: var(--rust);
+  color: var(--note);
   margin-bottom: 1.5rem;
+  font-size: 1rem;
 }
 
 .modal-content h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--brown);
-  margin: 1.5rem 0 0.5rem;
-  padding-bottom: 0.3rem;
-  border-bottom: 1px solid var(--gold-light);
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  margin: 2rem 0 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .modal-content .ingredients {
@@ -360,25 +338,151 @@ body::before {
 
 .modal-content .ingredients li {
   break-inside: avoid;
-  font-size: 0.95rem;
-  padding: 0.25rem 0 0.25rem 1.2rem;
+  font-size: 1rem;
+  padding: 0.2rem 0 0.2rem 0.9rem;
   position: relative;
+  color: var(--text);
 }
 
 .modal-content .ingredients li::before {
-  content: '\2022';
+  content: '';
   position: absolute;
   left: 0;
-  color: var(--gold);
+  top: 0.75em;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
 }
 
 .modal-content .instructions {
-  font-size: 0.95rem;
-  line-height: 1.9;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text);
+  display: block;
+  -webkit-line-clamp: unset;
 }
 
 .modal-content .grammie-tip {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.25rem 0 0;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* Gallery */
+.gallery-section {
+  background: var(--bg-warm);
+  padding: 4rem 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.gallery-header {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.gallery-header h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.gallery-header .gallery-rule {
+  width: 60px;
+  height: 2px;
+  background: var(--olive);
+  border: none;
+  margin: 1rem auto;
+}
+
+.gallery-header p {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--olive);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.gallery-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: white;
+}
+
+.gallery-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gallery-item .gallery-caption {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  padding: 0.6rem 0.8rem;
+  border-top: 1px solid var(--border-light);
+}
+
+/* Gallery lightbox */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+}
+
+.lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.4);
+}
+
+.lightbox-caption {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
 }
 
 /* Footer */
@@ -386,25 +490,25 @@ footer {
   text-align: center;
   padding: 3rem 2rem;
   border-top: 1px solid var(--border);
-  color: var(--ink-blue-light);
+  color: var(--text-tertiary);
   font-size: 0.85rem;
-  font-style: italic;
+  background: var(--bg-warm);
 }
-
-footer .heart { color: var(--rust); }
 
 /* Responsive */
 @media (max-width: 720px) {
-  .recipe-grid { grid-template-columns: 1fr; padding: 1.5rem 1rem 3rem; }
+  .recipe-grid { grid-template-columns: 1fr; }
   .modal-content { padding: 2rem 1.5rem 1.5rem; }
   .modal-content .ingredients { columns: 1; }
   .hero { padding: 3rem 1.5rem 2rem; }
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+  .gallery-section { padding: 3rem 1rem; }
 }
 
 /* Print styles */
 @media print {
-  .categories, .modal-overlay { display: none !important; }
-  .recipe-card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+  .categories, .modal-overlay, .gallery-section, .lightbox-overlay { display: none !important; }
+  .recipe-card { break-inside: avoid; }
   body { background: white; }
 }
 </style>
@@ -412,13 +516,11 @@ footer .heart { color: var(--rust); }
 <body>
 
 <header class="hero">
-  <div class="hero-ornament">&mdash; &diams; &mdash;</div>
-  <h1>Grammie's Recipe Box</h1>
-  <p class="subtitle">Handwritten with love, preserved for generations</p>
-  <div class="divider"><span>&diams;</span></div>
+  <h1>Grammie's Recipes</h1>
+  <hr class="hero-rule">
+  <p class="subtitle">A collection of handwritten recipe cards, transcribed and preserved</p>
   <p class="intro">
-    These recipes were lovingly written on index cards by Grammie and photographed to preserve them for our family.
-    Each one carries her voice, her tips and her unmistakable handwriting. May they bring as much joy to your kitchen as they did to hers.
+    Nineteen recipes in Grammie's own hand, photographed from her index card box and set down here so they won't be lost. Her notes and tips are kept as she wrote them.
   </p>
 </header>
 
@@ -442,9 +544,22 @@ footer .heart { color: var(--rust); }
   </div>
 </div>
 
+<section class="gallery-section">
+  <div class="gallery-header">
+    <h2>The Original Cards</h2>
+    <hr class="gallery-rule">
+    <p>Grammie's handwriting, exactly as she wrote it</p>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
 <footer>
-  <p>Made with <span class="heart">&hearts;</span> to preserve Grammie's legacy</p>
-  <p style="margin-top: 0.5rem; font-size: 0.8rem;">19 recipes from her handwritten recipe card collection</p>
+  <p>19 recipes from Grammie's handwritten recipe card collection</p>
 </footer>
 
 <script>
@@ -875,10 +990,71 @@ function filterRecipes(category, btn) {
 }
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Escape') { closeModal(); closeLightbox(); }
 });
 
+const cardImages = [
+  { file: "IMG_0805.JPG", label: "Crabmeat Canapé (front)" },
+  { file: "IMG_0806.JPG", label: "Crabmeat Canapé (back)" },
+  { file: "IMG_0807.JPG", label: "Lobster Stew (front)" },
+  { file: "IMG_0808.JPG", label: "Lobster Stew (back)" },
+  { file: "IMG_0809.JPG", label: "“Party” Chicken (front)" },
+  { file: "IMG_0810.JPG", label: "“Party” Chicken (back)" },
+  { file: "IMG_0812.JPG", label: "Scalloped Oysters (front)" },
+  { file: "IMG_0813.JPG", label: "Scalloped Oysters (back)" },
+  { file: "IMG_0814.JPG", label: "Coffee Cake (front)" },
+  { file: "IMG_0815.JPG", label: "Coffee Cake (back)" },
+  { file: "IMG_0816.JPG", label: "Artichoke Canapé" },
+  { file: "IMG_0817.JPG", label: "Beef Stew (page 1)" },
+  { file: "IMG_0818.JPG", label: "Beef Stew (page 2)" },
+  { file: "IMG_0819.JPG", label: "Beef Stew (page 3)" },
+  { file: "IMG_0820.JPG", label: "Beef Stew (page 4)" },
+  { file: "IMG_0821.JPG", label: "Chicken Divan" },
+  { file: "IMG_0822.JPG", label: "Basic Creamed Chicken (front)" },
+  { file: "IMG_0823.JPG", label: "Basic Creamed Chicken (back)" },
+  { file: "IMG_0824.JPG", label: "Chicken Tetrazzini" },
+  { file: "IMG_0825.JPG", label: "Curried Chicken Salad" },
+  { file: "IMG_0826.JPG", label: "Potatoes Au Gratin (front)" },
+  { file: "IMG_0827.JPG", label: "Potatoes Au Gratin (back)" },
+  { file: "IMG_0828.JPG", label: "Celery Casserole" },
+  { file: "IMG_0829.JPG", label: "Praline Cookies (front)" },
+  { file: "IMG_0830.JPG", label: "Praline Cookies (back)" },
+  { file: "IMG_0831.JPG", label: "Orange Slices" },
+  { file: "IMG_0832.JPG", label: "Curried Fruit" },
+  { file: "IMG_0833.JPG", label: "Date & Nut Bread" },
+  { file: "IMG_0834.JPG", label: "Brownie Pie" }
+];
+
+function renderGallery() {
+  const grid = document.getElementById('galleryGrid');
+  cardImages.forEach(card => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    item.onclick = () => openLightbox(card.file, card.label);
+    item.innerHTML = `
+      <img src="${card.file}" alt="${card.label}" loading="lazy">
+      <div class="gallery-caption">${card.label}</div>
+    `;
+    grid.appendChild(item);
+  });
+}
+
+function openLightbox(file, label) {
+  document.getElementById('lightboxImg').src = file;
+  document.getElementById('lightboxCaption').textContent = label;
+  document.getElementById('lightboxOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightboxOverlay').classList.remove('active');
+  if (!document.getElementById('modalOverlay').classList.contains('active')) {
+    document.body.style.overflow = '';
+  }
+}
+
 renderCards();
+renderGallery();
 </script>
 
 </body>
